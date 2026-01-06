@@ -1,0 +1,86 @@
+import pandas as pd
+import os
+
+def generate_extra_resumes():
+    new_resumes = [
+        {
+            "Category": "Data Science",
+            "Resume": "Senior ML Engineer with 7+ years of experience in building scalable AI solutions. Expert in PyTorch, TensorFlow, and Large Language Models (LLMs). Developed a RAG-based customer support bot that reduced response time by 40%. Proficient in MLOps, Kubernetes, and AWS SageMaker. Master's in Computer Science from Stanford University."
+        },
+        {
+            "Category": "Web Designing",
+            "Resume": "Senior Full Stack Developer specializing in React and Node.js. 5 years of experience building responsive dashboards and e-commerce platforms. Expertise in TypeScript, Tailwind CSS, and Next.js. Lead a team of 4 developers to migrate a legacy PHP system to a modern microservices architecture. Strong focus on performance optimization and SEO."
+        },
+        {
+            "Category": "DevOps Engineer",
+            "Resume": "Cloud Architect and DevOps specialist with 6 years of experience. Certified Kubernetes Administrator (CKA). Expert in Terraform, CI/CD pipelines (Jenkins, GitHub Actions), and monitoring with Prometheus/Grafana. Managed infrastructure for a high-traffic fintech app on AWS, ensuring 99.9% uptime. Automated deployment processes reducing release cycles by 60%."
+        },
+        {
+            "Category": "Data Science",
+            "Resume": "Data Scientist focused on Computer Vision and Deep Learning. Experienced in YOLOv8, OpenCV, and NVIDIA TensorRT. Built a real-time object detection system for autonomous drones. Proficient in Python, SQL, and Tableau. PhD in Mathematics with multiple publications in CVPR."
+        },
+        {
+            "Category": "Java Developer",
+            "Resume": "Backend Engineer with expertise in Java, Spring Boot, and Microservices. 8 years of experience in the banking sector. Specialized in high-concurrency systems, Kafka, and Redis. Implemented a real-time fraud detection engine handling 10k transactions per second. Expert in SQL optimization and distributed databases."
+        },
+        {
+            "Category": "Cybersecurity",
+            "Resume": "Information Security Analyst with a focus on Penetration Testing and Incident Response. OSCP and CISSP certified. Experienced with Burp Suite, Metasploit, and SIEM tools like Splunk. Conducted security audits for Fortune 500 companies. Expert in network security and SOC operations."
+        },
+        {
+            "Category": "Product Manager",
+            "Resume": "Technical Product Manager with a background in Software Engineering. 4 years of experience leading agile teams in the SaaS space. Expertise in Jira, Confluence, and Product Analytics (Mixpanel). Success in launching a B2B product that achieved $1M ARR in its first year. Strong user-centric design focus."
+        },
+        {
+            "Category": "Blockchain",
+            "Resume": "Blockchain Developer specializing in Ethereum and Solidity. 3 years of experience building DeFi protocols and NFT marketplaces. Expert in smart contract security, Hardhat, and Web3.js. Contributed to open-source Ethereum improvement proposals. Proficient in Go and Rust."
+        },
+        {
+            "Category": "Data Science",
+            "Resume": "NLP Research Engineer with a focus on Transformer architectures and Fine-tuning. 5 years experience at Google Research. Expert in HuggingFace, BERT, and GPT-4 integration. Developed a sentiment analysis tool for 20+ languages. Strong background in Linguistics and Distributed Computing."
+        },
+        {
+            "Category": "Business Analyst",
+            "Resume": "Senior Business Analyst with 6 years of experience in the Retail sector. Expert in SQL, Python, and PowerBI. Translated complex business requirements into technical specs for a nationwide supply chain optimization project. Strong communication skills and stakeholder management."
+        },
+        {
+            "Category": "Cloud Solutions",
+            "Resume": "Azure Solutions Architect with 10 years in IT. Expert in Migrate/Modernize projects. Specialist in Azure DevOps, App Service, and CosmosDB. Designed and implemented a serverless architecture for a global healthcare provider, reducing infrastructure costs by 30%."
+        },
+        {
+            "Category": "Mobile App Development",
+            "Resume": "Flutter and iOS Developer with 4 years of experience. Built and published 10+ apps on App Store and Play Store. Expertise in Dart, Swift, and Firebase integration. Specialist in creating fluid animations and high-performance cross-platform UIs."
+        }
+    ]
+    
+    # Let's add more to reach around 30 resumes
+    roles = [
+        ("Data Science", "MLOps Engineer specializing in model deployment and monitoring. Expert in MLflow, Kubeflow, and Docker. 4 years experience in automating the machine learning lifecycle. Proficient in Python and Go."),
+        ("Web Designing", "Frontend Architect with a passion for Accessibility and Design Systems. 7 years experience in UI/UX and React. Expert in Storybook, Styled Components, and Framer Motion. Built a company-wide library of reusable components used by 50+ developers."),
+        ("Sales", "Senior Sales Executive in Tech/SaaS. Achieved 150% of quota for 3 consecutive years. Expert in CRM tools (Salesforce), lead generation, and closing enterprise deals. Strong networking and presentation skills."),
+        ("Health and fitness", "Certified Nutrition and Fitness Coach with a background in Physiology. Developed personalized training programs for professional athletes. Expert in tracking progress using data analytics tools. 5 years experience in holistic health coaching."),
+        ("Civil Engineer", "Project Manager and Civil Engineer with 10 years experience in large-scale infrastructure projects. Expert in AutoCAD, Civil 3D, and BIM. Managed a $50M highway construction project from design to completion. Strong focus on sustainability and structural integrity."),
+        ("Testing", "SDET with 5 years experience in Automation Testing. Expert in Selenium, Cypress, and Appium. Developed a custom testing framework that reduced regression testing time by 75%. Proficient in Java and Python."),
+        ("PMO", "PMO Director with 15 years experience in managing complex IT portfolios. Expert in PMP, PRINCE2, and Agile methodologies. Streamlined project delivery processes across 5 global offices. Strong leadership and strategic planning skills."),
+        ("Network Administrator", "Network Security Engineer with 8 years experience. Expert in Cisco, Juniper, and Checkpoint firewalls. Managed large-scale enterprise networks and implemented Zero Trust architecture. Specialized in VPN, BGP, and OSPF."),
+        ("SAP Adop", "SAP ABAP Consultant with 6 years experience in S/4HANA migrations. Expert in OData services, Adobe Forms, and Web Dynpro. Implemented custom solutions for manufacturing and finance modules. Strong analytical and troubleshooting skills."),
+        ("Hadoop", "Big Data Engineer with 5 years experience in the Hadoop ecosystem. Expert in Hive, Spark, and Pig. Optimized complex MapReduce jobs, resulting in a 50% reduction in processing time. Proficient in Scala and Java."),
+        ("Electrical Engineering", "Electrical Systems Engineer specializing in Renewable Energy. 7 years experience in designing solar power plants and battery storage systems. Expert in MATLAB, ETAP, and PLC programming. Strong background in power distribution and grid stability."),
+        ("Arts", "Professional Graphic Designer and Illustrator. 6 years experience in branding, digital art, and typography. Expert in Adobe Creative Suite (Photoshop, Illustrator, InDesign). Created visual identities for 20+ startups."),
+        ("HR", "HR Manager with 8 years experience in talent acquisition and employee relations. Specialized in scaling tech teams in fast-paced environments. Expert in HRIS tools (Workday), performance management, and organizational development.")
+    ]
+    
+    for cat, res in roles:
+        new_resumes.append({"Category": cat, "Resume": res})
+
+    df = pd.DataFrame(new_resumes)
+    
+    # Save to data/resumes/additional_resumes.csv
+    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    output_path = os.path.join(base_path, 'data', 'resumes', 'additional_resumes.csv')
+    
+    df.to_csv(output_path, index=False)
+    print(f"Generated {len(df)} additional resumes at {output_path}")
+
+if __name__ == "__main__":
+    generate_extra_resumes()
